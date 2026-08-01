@@ -1,134 +1,303 @@
-# Meridian — Finance Dashboard
+# Meridian Finance Dashboard
 
-Meridian is a finance operations dashboard for tracking revenue, expenses, budgets,
-investments and savings goals in one place. Built with React 19, Vite, TanStack
-Query, Zustand, React Hook Form + Zod, Recharts, Framer Motion and Tailwind CSS.
+Meridian Finance Dashboard is a web application for managing personal finance in one place. It helps users to keep track of income, expenses, budgets, investments, savings goals, reports, and financial events. The project is built using React and Vite with a feature-based folder structure and reusable UI components.
 
----
-
-## Quick start
-
-```bash
-npm install
-npm run dev
-```
-
-Open the printed local URL (default `http://localhost:5173`).
-
-Production build:
-
-```bash
-npm run build   # outputs a self-contained dist/index.html
-npm run preview # serve the production build
-```
-
-No extra configuration is required to run it locally.
+The main goal of this project is to provide a clean and organized finance dashboard that is easy to use and easy to maintain.
 
 ---
 
 ## Features
 
-| Module | Highlights |
-| --- | --- |
-| **Dashboard** | KPI cards with sparklines & deltas, 12-month cash-flow chart, budget status, recent transactions, upcoming bills, cash runway |
-| **Transactions** | Full CRUD, debounced search, type/category filters, column sorting, pagination, category tags, status badges, CSV export |
-| **Budgets** | Monthly limits per category, spending progress, on-track / warning / over-budget states, overspend alerts |
-| **Analytics** | Income vs expenses, category breakdown donut, net cash-flow area chart with a 3-month linear forecast, insight KPIs |
-| **Investments** | Portfolio value, total gain, daily change, annualized return, allocation donut, performance vs S&P 500, holdings table |
-| **Savings Goals** | Progress rings, completion %, deadlines, countdowns, contributions |
-| **Reports** | Monthly / quarterly / annual reports with compare chips, category tables, monthly pattern charts and a PDF export flow (print) |
-| **Calendar** | Bills, expected income days and reminders on a month grid with a day-detail panel |
-| **Settings** | Profile, theme (light/dark/system), currency (8 options), language (en/es), notification preferences, security (password, 2FA, sessions) |
+### Dashboard
 
-Cross-cutting: toast notifications, skeleton loading, empty & error states,
-responsive layout (mobile drawer nav), keyboard navigation, WCAG-oriented
-semantics, and `prefers-reduced-motion` support.
+The dashboard provides a quick overview of financial information.
+
+It includes:
+
+* Financial summary cards
+* Cash flow chart
+* Budget overview
+* Recent transactions
+* Upcoming bills
+* Cash runway information
 
 ---
 
-## Architecture
+### Transactions
 
-Feature-based structure — each module owns its UI, forms and query hooks, while
-shared primitives live in `components/`.
+The transaction module is used to manage daily financial records.
 
-```
+Features:
+
+* Add transaction
+* Edit transaction
+* Delete transaction
+* Search transactions
+* Filter by category and type
+* Sort transaction table
+* Pagination
+* CSV export
+* Status and category badges
+
+---
+
+### Budgets
+
+The budget section helps users monitor spending and compare it with planned budgets.
+
+Features:
+
+* Budget by category
+* Spending progress
+* Remaining budget
+* Overspending indicators
+
+---
+
+### Analytics
+
+The analytics section provides visual insights into financial data.
+
+It includes:
+
+* Income vs Expense charts
+* Category breakdown
+* Cash flow trend
+* Forecast chart
+* Financial summary
+
+---
+
+### Investments
+
+The investment section provides portfolio information.
+
+Features:
+
+* Portfolio value
+* Total gain
+* Daily performance
+* Annual return
+* Asset allocation
+* Holdings table
+* Performance comparison
+
+---
+
+### Savings Goals
+
+The savings goals section helps users monitor their financial goals.
+
+Features:
+
+* Goal progress
+* Completion percentage
+* Remaining amount
+* Contribution tracking
+
+---
+
+### Reports
+
+The reports section provides financial summaries.
+
+Available reports include:
+
+* Monthly reports
+* Quarterly reports
+* Annual reports
+* Category summaries
+* Comparison reports
+* Print-friendly PDF export
+
+---
+
+### Calendar
+
+The calendar module helps users manage financial events.
+
+It displays:
+
+* Bills
+* Income reminders
+* Payment reminders
+* Scheduled financial events
+
+---
+
+### Settings
+
+The settings page allows users to customize the application.
+
+Available options:
+
+* Profile settings
+* Theme selection
+* Currency selection
+* Language settings
+* Notification settings
+* Security settings
+
+---
+
+## Tech Stack
+
+* React 19
+* Vite
+* React Router
+* Zustand
+* TanStack Query
+* React Hook Form
+* Zod
+* Axios
+* Recharts
+* Framer Motion
+* Tailwind CSS
+
+---
+
+## Project Structure
+
+```text
 src/
-├── app/                 # ErrorBoundary (app root)
-├── assets/              # logo.svg
+├── app/
+├── assets/
 ├── components/
-│   ├── charts/          # ChartCard, shared tooltip, palette hook
-│   ├── common/          # States (Skeleton/Empty/Error), PageHeader, StatCard
-│   ├── layout/          # Sidebar, Topbar
-│   └── ui/              # Button, Field, Card, Badge, Modal, Tabs, Table, Dropdown, Toaster
-├── constants/           # nav config, i18n dictionary, theme, chart palettes
-├── data/                # seed ledger (deterministic PRNG)
+│   ├── charts/
+│   ├── common/
+│   ├── layout/
+│   └── ui/
+├── constants/
+├── data/
 ├── features/
-│   ├── dashboard/       # DashboardPage
-│   ├── transactions/    # page + form + query hooks (CRUD, CSV)
-│   ├── budgets/         # page + form
-│   ├── analytics/       # page + charts
-│   ├── investments/     # page + charts
-│   ├── goals/           # page + forms
-│   ├── reports/         # page
-│   ├── calendar/        # page + reminder form
-│   └── settings/        # page (profile/preferences/notifications/security)
-├── hooks/               # useDebounce, useI18n
-├── layouts/             # AppLayout (shell: sidebar + topbar + outlet)
-├── pages/               # NotFoundPage
-├── routes/              # lazy route table
-├── services/            # axios instance + local API layer
-├── store/               # Zustand stores (preferences, toasts)
-├── styles/              # design tokens + Tailwind entry
-└── utils/               # cn, format (Intl), csv
+│   ├── analytics/
+│   ├── budgets/
+│   ├── calendar/
+│   ├── dashboard/
+│   ├── goals/
+│   ├── investments/
+│   ├── reports/
+│   ├── settings/
+│   └── transactions/
+├── hooks/
+├── layouts/
+├── pages/
+├── routes/
+├── services/
+├── store/
+├── styles/
+└── utils/
 ```
 
-### Data flow
+The project follows a feature-based architecture. Each major feature is separated into its own folder while shared components, utilities, layouts, hooks, and state management are placed in common folders. This structure keeps the project organized and easier to maintain.
 
-- **UI components** call **feature hooks** (`useTransactionsQuery`, …) which wrap
-  TanStack Query.
-- Query functions hit the **services layer** — an axios instance with a local
-  adapter that routes REST-style calls (`GET /transactions`, `POST /goals/:id/contribute`, …)
-  against an in-memory store seeded by `data/generator.js`.
-- Mutations invalidate every derived collection (ledger → dashboard, budgets,
-  analytics, reports, calendar) so views stay consistent after a write.
+---
 
-### Connecting a real backend
+## Getting Started
 
-The local adapter implements the same contract a backend would expose. Set:
+### Prerequisites
+
+Make sure you have the following installed:
+
+* Node.js
+* npm
+
+### Installation
+
+Clone the repository.
 
 ```bash
-VITE_API_BASE_URL=https://api.yourdomain.com/v1
-VITE_MOCK_API=false
+git clone <repository-url>
 ```
 
-and restart. The adapter swaps out, the rest of the app is unaffected.
+Move into the project folder.
+
+```bash
+cd Meridian-Finance-Dashboard
+```
+
+Install dependencies.
+
+```bash
+npm install
+```
+
+Start the development server.
+
+```bash
+npm run dev
+```
+
+Open the local development URL shown in the terminal.
 
 ---
 
-## Engineering notes
+## Available Scripts
 
-- **Data** — a seeded PRNG (mulberry32) generates 14 months of transactions
-  (~500 rows), budgets derived from actual spend (so warning/over states
-  always occur), 252 trading days of random-walk prices for 8 holdings, bills,
-  goals and reminders. Reloads stay stable.
-- **State** — Zustand persists preferences (theme, currency, language, profile,
-  notification prefs) to `localStorage`; toasts live in a separate store.
-- **Theming** — colors flow through CSS variables; Tailwind v4 maps them via
-  `@theme inline`. Charts re-resolve their palette when the theme flips.
-- **Forms** — React Hook Form + Zod everywhere; category lists react to type
-  changes, cross-field validation (password match, amount ranges).
-- **Performance** — lazy-loaded routes, memoized Intl formatters, debounced
-  search, server-side style filtering/pagination in the API layer.
-- **Accessibility** — semantic landmarks, `aria-sort`/`aria-pressed`/`role=menu`
-  semantics, Escape-to-close overlays with scroll lock, focus-visible rings,
-  `aria-live` toasts, reduced-motion CSS.
+| Command           | Description                      |
+| ----------------- | -------------------------------- |
+| `npm run dev`     | Start development server         |
+| `npm run build`   | Build the project for production |
+| `npm run preview` | Preview the production build     |
+| `npm run lint`    | Run ESLint                       |
 
 ---
 
-## Scripts
+## Application Routes
 
-| Script | Purpose |
-| --- | --- |
-| `npm run dev` | Start the Vite dev server |
-| `npm run build` | Production build (single-file output) |
-| `npm run preview` | Preview the production build |
+The application contains the following main sections:
+
+* Dashboard
+* Transactions
+* Budgets
+* Analytics
+* Investments
+* Goals
+* Reports
+* Calendar
+* Settings
+
+Unknown routes are handled by a dedicated **Not Found** page.
+
+---
+
+## Main Libraries
+
+| Library         | Purpose                   |
+| --------------- | ------------------------- |
+| React Router    | Client-side routing       |
+| Zustand         | Global state management   |
+| TanStack Query  | Data fetching and caching |
+| Axios           | HTTP requests             |
+| React Hook Form | Form management           |
+| Zod             | Form validation           |
+| Recharts        | Data visualization        |
+| Framer Motion   | Animations                |
+
+---
+
+## UI Components
+
+The project contains reusable UI components that are shared across different modules.
+
+Some commonly used components include:
+
+* Buttons
+* Cards
+* Tables
+* Forms
+* Dropdowns
+* Tabs
+* Modals
+* Toast notifications
+* Badges
+
+Using reusable components helps keep the UI consistent throughout the application.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+You are free to use, modify, distribute, and publish this project according to the terms of the MIT License.
