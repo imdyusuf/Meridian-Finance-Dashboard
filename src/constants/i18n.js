@@ -1,0 +1,121 @@
+/**
+ * Lightweight i18n. The dictionary covers navigation and shared UI; deep
+ * page copy intentionally stays in English to keep the product copy crisp.
+ * Swap this module for a full i18n library when more locales land.
+ */
+export const LANGUAGES = [
+  { code: "en", label: "English", locale: "en-US" },
+  { code: "es", label: "Español", locale: "es-ES" },
+];
+
+const messages = {
+  en: {
+    "nav.section.overview": "Overview",
+    "nav.section.manage": "Manage",
+    "nav.section.plan": "Plan",
+    "nav.dashboard": "Dashboard",
+    "nav.analytics": "Analytics",
+    "nav.reports": "Reports",
+    "nav.transactions": "Transactions",
+    "nav.budgets": "Budgets",
+    "nav.goals": "Goals",
+    "nav.investments": "Investments",
+    "nav.calendar": "Calendar",
+    "nav.settings": "Settings",
+    "common.search": "Search",
+    "common.add": "Add",
+    "common.edit": "Edit",
+    "common.delete": "Delete",
+    "common.cancel": "Cancel",
+    "common.save": "Save",
+    "common.saving": "Saving…",
+    "common.close": "Close",
+    "common.retry": "Try again",
+    "common.loading": "Loading",
+    "common.all": "All",
+    "common.today": "Today",
+    "common.actions": "Actions",
+    "common.exportCsv": "Export CSV",
+    "common.confirm": "Confirm",
+    "common.next": "Next",
+    "common.prev": "Previous",
+    "common.currency": "Currency",
+    "common.language": "Language",
+    "common.theme": "Theme",
+    "common.light": "Light",
+    "common.dark": "Dark",
+    "common.system": "System",
+    "common.notifications": "Notifications",
+    "common.profile": "Profile",
+    "common.preferences": "Preferences",
+    "common.security": "Security",
+    "common.overview": "Overview",
+    "common.revenue": "Revenue",
+    "common.expenses": "Expenses",
+    "common.savings": "Savings",
+    "common.balance": "Balance",
+    "common.upcoming": "Upcoming",
+    "common.noResults": "No results found",
+    "common.export": "Export",
+  },
+  es: {
+    "nav.section.overview": "Resumen",
+    "nav.section.manage": "Gestionar",
+    "nav.section.plan": "Planificar",
+    "nav.dashboard": "Panel",
+    "nav.analytics": "Analítica",
+    "nav.reports": "Informes",
+    "nav.transactions": "Transacciones",
+    "nav.budgets": "Presupuestos",
+    "nav.goals": "Metas",
+    "nav.investments": "Inversiones",
+    "nav.calendar": "Calendario",
+    "nav.settings": "Ajustes",
+    "common.search": "Buscar",
+    "common.add": "Añadir",
+    "common.edit": "Editar",
+    "common.delete": "Eliminar",
+    "common.cancel": "Cancelar",
+    "common.save": "Guardar",
+    "common.saving": "Guardando…",
+    "common.close": "Cerrar",
+    "common.retry": "Reintentar",
+    "common.loading": "Cargando",
+    "common.all": "Todos",
+    "common.today": "Hoy",
+    "common.actions": "Acciones",
+    "common.exportCsv": "Exportar CSV",
+    "common.confirm": "Confirmar",
+    "common.next": "Siguiente",
+    "common.prev": "Anterior",
+    "common.currency": "Moneda",
+    "common.language": "Idioma",
+    "common.theme": "Tema",
+    "common.light": "Claro",
+    "common.dark": "Oscuro",
+    "common.system": "Sistema",
+    "common.notifications": "Notificaciones",
+    "common.profile": "Perfil",
+    "common.preferences": "Preferencias",
+    "common.security": "Seguridad",
+    "common.overview": "Resumen",
+    "common.revenue": "Ingresos",
+    "common.expenses": "Gastos",
+    "common.savings": "Ahorros",
+    "common.balance": "Saldo",
+    "common.upcoming": "Próximos",
+    "common.noResults": "Sin resultados",
+    "common.export": "Exportar",
+  },
+};
+
+export function translate(lang, key, vars) {
+  const table = messages[lang] ?? messages.en;
+  let text = table[key] ?? messages.en[key] ?? key;
+  if (vars) {
+    for (const [name, value] of Object.entries(vars)) {
+      text = text.replace(new RegExp(`\\{${name}\\}`, "g"), String(value));
+    }
+  }
+  return text;
+}
